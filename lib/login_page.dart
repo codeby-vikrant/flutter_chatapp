@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/chat_page.dart';
+import 'package:flutter_study/utilities/spaces.dart';
 import 'package:flutter_study/utilities/textfield_styles.dart';
+import 'package:flutter_study/widgets/login_text_field.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -50,15 +52,16 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
             ),
-            Image.network(
-              'https://stimg.cardekho.com/images/carexteriorimages/930x620/Porsche/911/10990/1690869580714/front-left-side-47.jpg',
+            Image.asset(
+              'assets/illustration.png',
               height: 200,
             ),
             Form(
               key: _formKey,
               child: Column(
                 children: [
-                  TextFormField(
+                  LoginTextField(
+                    hintText: "Enter Your Username",
                     validator: (value) {
                       if (value != null &&
                           value.isNotEmpty &&
@@ -70,30 +73,17 @@ class LoginPage extends StatelessWidget {
                       return null;
                     },
                     controller: userNameController,
-                    decoration: InputDecoration(
-                      hintText: "Type Your Username",
-                      hintStyle: ThemeTextStyle.loginTextFieldStyle,
-                      border: OutlineInputBorder(),
-                    ),
                   ),
-                  SizedBox(
-                    height: 24,
-                  ),
-                  TextFormField(
+                  verticalSpacing(24),
+                  LoginTextField(
+                    hasAsterisks: true,
+                    hintText: "Enter Your Password",
                     controller: passwordController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: "Type Your Password",
-                      hintStyle: ThemeTextStyle.loginTextFieldStyle,
-                      border: OutlineInputBorder(),
-                    ),
                   ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 24,
-            ),
+            verticalSpacing(24),
             ElevatedButton(
                 onPressed: () {
                   loginUser(context);
