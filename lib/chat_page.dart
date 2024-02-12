@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_study/widgets/chat_input.dart';
 import 'package:flutter_study/widgets/chat_bubble.dart';
 
@@ -18,7 +19,7 @@ class ChatPage extends StatelessWidget {
         createdAt: 2131231242,
         id: '1',
         text: 'Second text',
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOkZdPituG-u78CL9TsJ7kP-oluyq1-7-oRLU46HCjrw&s'),
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqaDsKdwVRbU_radzACmCYwVNKeXhxQ8E3lYgJUifDMA&s'),
     ChatMessageEntity(
       author: Author(username: "Vedant"),
       createdAt: 2131231242,
@@ -27,6 +28,11 @@ class ChatPage extends StatelessWidget {
     ),
   ];
 
+  _loadInitialMessages()
+  {
+    final response = rootBundle.loadString('key');
+    print(response);
+  }
   @override
   Widget build(BuildContext context) {
     final username = ModalRoute.of(context)!.settings.arguments as String;
