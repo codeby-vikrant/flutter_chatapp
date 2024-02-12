@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/chat_input.dart';
-import 'package:flutter_study/widgets.dart';
+import 'package:flutter_study/widgets/chat_input.dart';
+import 'package:flutter_study/widgets/chat_bubble.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
