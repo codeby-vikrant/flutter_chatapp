@@ -3,6 +3,7 @@ import 'package:flutter_study/chat_page.dart';
 import 'package:flutter_study/utilities/spaces.dart';
 import 'package:flutter_study/utilities/textfield_styles.dart';
 import 'package:flutter_study/widgets/login_text_field.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -93,9 +94,13 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 )),
             GestureDetector(
-              onTap: () {
+              onTap: () async{
                 //todo: navigate to the browser
                 print("Link Clicked");
+                if (!await launch("https://www.usvhealth.com"))
+                {
+                throw ('Could not launch this');
+                }
               },
               child: Column(
                 children: [
