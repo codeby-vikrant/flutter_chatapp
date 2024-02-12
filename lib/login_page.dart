@@ -3,6 +3,7 @@ import 'package:flutter_study/chat_page.dart';
 import 'package:flutter_study/utilities/spaces.dart';
 import 'package:flutter_study/utilities/textfield_styles.dart';
 import 'package:flutter_study/widgets/login_text_field.dart';
+import 'package:social_media_buttons/social_media_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatelessWidget {
@@ -15,7 +16,8 @@ class LoginPage extends StatelessWidget {
     if (_formKey.currentState != null && _formKey.currentState!.validate()) {
       print(userNameController.text);
       print(passwordController.text);
-      Navigator.pushReplacementNamed(context, '/chat', arguments: '${userNameController.text}');
+      Navigator.pushReplacementNamed(context, '/chat',
+          arguments: '${userNameController.text}');
       print("Login Successfully");
     } else {
       print("Not Successfull");
@@ -58,6 +60,7 @@ class LoginPage extends StatelessWidget {
               'assets/illustration.png',
               height: 200,
             ),
+            verticalSpacing(10),
             Form(
               key: _formKey,
               child: Column(
@@ -95,12 +98,11 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 )),
             GestureDetector(
-              onTap: () async{
+              onTap: () async {
                 //todo: navigate to the browser
                 print("Link Clicked");
-                if (!await launch(_mainUrl))
-                {
-                throw ('Could not launch this');
+                if (!await launch(_mainUrl)) {
+                  throw ('Could not launch this');
                 }
               },
               child: Column(
@@ -110,6 +112,25 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SocialMediaButton.github(
+                  size: 20,
+                  url: "https://github.com/codeby-vikrant",
+                ),
+                SocialMediaButton.linkedin(
+                  color: Colors.blue,
+                  size: 20,
+                  url: "linkedin.com/in/vikrant-vani-96b329209",
+                ),
+                SocialMediaButton.instagram(
+                  color: Colors.deepPurple,
+                  size: 20,
+                  url: "https://www.instagram.com/_.vikrant_10._/",
+                )
+              ],
+            )
           ],
         ),
       ),
