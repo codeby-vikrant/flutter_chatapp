@@ -9,6 +9,7 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   final _formKey = GlobalKey<FormState>();
+  final _mainUrl = "https://www.usvhealth.com";
 
   void loginUser(context) {
     if (_formKey.currentState != null && _formKey.currentState!.validate()) {
@@ -97,7 +98,7 @@ class LoginPage extends StatelessWidget {
               onTap: () async{
                 //todo: navigate to the browser
                 print("Link Clicked");
-                if (!await launch("https://www.usvhealth.com"))
+                if (!await launch(_mainUrl))
                 {
                 throw ('Could not launch this');
                 }
@@ -105,7 +106,7 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: [
                   Text("Find Us On"),
-                  Text('https://www.usvhealth.com'),
+                  Text(_mainUrl),
                 ],
               ),
             ),
