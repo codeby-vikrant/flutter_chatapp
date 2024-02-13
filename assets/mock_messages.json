@@ -1,0 +1,52 @@
+[
+  {
+    "author": {
+      "username": "vicky10"
+    },
+    "createdAt": 1598438497000,
+    "id": "10001",
+    "text": "Hi"
+  },
+  {
+    "author": {
+      "username": "vicky10"
+    },
+    "createdAt": 1598438497000,
+    "id": "10002",
+    "text": "Good Morning! How's the new place?"
+  },
+  {
+    "author": {
+      "username": "vedant19"
+    },
+    "createdAt": 1598438497000,
+    "id": "10003",
+    "text": "Heyy Good Morning to you too! It has been pretty great! \n\n The weather is good too",
+    "image": ""
+  },
+  {
+    "author": {
+      "username": "vicky10"
+    },
+    "createdAt": 1598438497000,
+    "id": "10004",
+    "text": "Oh that looks wonderful"
+  },
+  {
+    "author": {
+      "username": "vicky10"
+    },
+    "createdAt": 1598438497000,
+    "id": "10005",
+    "text": "Pixel really misses you btw!",
+    "image": ""
+  },
+  {
+    "author": {
+      "username": "vedant19"
+    },
+    "createdAt": 1598438497000,
+    "id": "10006",
+    "text": "Oh noo! I do too"
+  }
+]

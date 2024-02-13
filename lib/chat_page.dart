@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_study/widgets/chat_input.dart';
@@ -5,34 +7,49 @@ import 'package:flutter_study/widgets/chat_bubble.dart';
 
 import 'models/chat_message_entity.dart';
 
-class ChatPage extends StatelessWidget {
-   ChatPage({super.key});
+class ChatPage extends StatefulWidget {
+  ChatPage({super.key});
 
-  List<ChatMessageEntity> _messages = [
-    ChatMessageEntity(
-        author: Author(username: "vicky10"),
-        createdAt: 2131231242,
-        id: '1',
-        text: 'First text'),
-    ChatMessageEntity(
-        author: Author(username: "vicky10"),
-        createdAt: 2131231242,
-        id: '1',
-        text: 'Second text',
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqaDsKdwVRbU_radzACmCYwVNKeXhxQ8E3lYgJUifDMA&s'),
-    ChatMessageEntity(
-      author: Author(username: "Vedant"),
-      createdAt: 2131231242,
-      id: '1',
-      text: 'Third text',
-    ),
-  ];
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
 
-  _loadInitialMessages()
-  {
-    final response = rootBundle.loadString('key');
-    print(response);
+class _ChatPageState extends State<ChatPage> {
+
+  //initial state of messages
+  List<ChatMessageEntity> _messages = [];
+
+  _loadInitialMessages() async {
+    rootBundle.loadString('assets/mock_messages.json').then((response) {
+      final List<dynamic> decodedList = jsonDecode(response) as List;
+
+      final List<ChatMessageEntity> _chatMessages = decodedList.map((listItem) {
+        return ChatMessageEntity.fromJson(listItem);
+      }).toList();
+      print(_chatMessages.length);
+
+      //final state of the messages
+      setState(() {
+        _messages = _chatMessages;
+      });
+    }).then((_) {
+      print("Done");
+    });
+
+    print("Something");
   }
+
+  onMessageSent(ChatMessageEntity entity) {
+    _messages.add(entity);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    _loadInitialMessages();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final username = ModalRoute.of(context)!.settings.arguments as String;
@@ -66,7 +83,9 @@ class ChatPage extends StatelessWidget {
                       entity: _messages[index]);
                 }),
           ),
-          ChatInput(),
+          ChatInput(
+            onSubmit: onMessageSent,
+          ),
         ],
       ),
     );
