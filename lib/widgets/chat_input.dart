@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/models/chat_message_entity.dart';
 
-
 class ChatInput extends StatelessWidget {
   final Function(ChatMessageEntity) onSubmit;
+
   ChatInput({super.key, required this.onSubmit});
 
   final chatMessageController = TextEditingController();
@@ -11,7 +11,8 @@ class ChatInput extends StatelessWidget {
   void onSendButtonPressed() {
     print("Chat Message :${chatMessageController.text}");
 
-    final newChatMessage = ChatMessageEntity(text: chatMessageController.text,
+    final newChatMessage = ChatMessageEntity(
+        text: chatMessageController.text,
         id: '101',
         createdAt: DateTime.now().microsecondsSinceEpoch,
         author: Author(username: "vicky10"));
@@ -26,12 +27,22 @@ class ChatInput extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: Text('Nah this does nothing!, because i dont know how to do it'),
+                      );
+                    });
+              },
               icon: Icon(
                 Icons.add,
                 color: Colors.white,
               )),
-          Expanded(child: TextField(
+          Expanded(
+              child: TextField(
             keyboardType: TextInputType.multiline,
             maxLines: 5,
             minLines: 1,

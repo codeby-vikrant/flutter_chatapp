@@ -56,6 +56,7 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
             ),
+            verticalSpacing(10),
             Image.asset(
               'assets/illustration.png',
               height: 200,
