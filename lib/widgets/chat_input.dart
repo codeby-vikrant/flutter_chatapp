@@ -33,7 +33,7 @@ class ChatInput extends StatelessWidget {
                     builder: (BuildContext context) {
                       return Padding(
                         padding: const EdgeInsets.all(24.0),
-                        child: Text('Nah this does nothing!, because i dont know how to do it'),
+                        child: Text('Nah this does nothing!, because i dont know how to'),
                       );
                     });
               },

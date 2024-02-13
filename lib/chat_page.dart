@@ -2,10 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_study/services/auth_services.dart';
 import 'package:flutter_study/widgets/chat_input.dart';
 import 'package:flutter_study/widgets/chat_bubble.dart';
-import 'package:provider/provider.dart';
 
 import 'models/chat_message_entity.dart';
 
@@ -17,6 +15,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+
   //initial state of messages
   List<ChatMessageEntity> _messages = [];
 
@@ -78,8 +77,7 @@ class _ChatPageState extends State<ChatPage> {
                 itemCount: _messages.length,
                 itemBuilder: (context, index) {
                   return ChatBubble(
-                      alignment: _messages[index].author.username ==
-                              context.read<AuthService>().getUserName()
+                      alignment: _messages[index].author.username == 'vicky10'
                           ? Alignment.centerRight
                           : Alignment.centerLeft,
                       entity: _messages[index]);
