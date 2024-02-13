@@ -44,6 +44,7 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
   }
 
+
   @override
   void initState() {
     _loadInitialMessages();
